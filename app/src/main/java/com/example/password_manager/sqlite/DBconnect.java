@@ -74,7 +74,7 @@ public class DBconnect extends SQLiteOpenHelper {
         values.put(COLUMN_USER_PASSWORD, user.getPassword());
 
         // Inserting Row
-        db.insert(TABLE_USER, null, values);
+        db.insert(TABLE_PASS, null, values);
         db.close();
     }
 
@@ -96,7 +96,7 @@ public class DBconnect extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // query the user table
-        Cursor cursor = db.query(TABLE_USER, //Table to query
+        Cursor cursor = db.query(TABLE_PASS, //Table to query
                 columns,    //columns to return
                 null,        //columns for the WHERE clause
                 null,        //The values for the WHERE clause
@@ -164,7 +164,7 @@ public class DBconnect extends SQLiteOpenHelper {
         String[] selectionArgs = {email};
 
         // query user table with condition
-        Cursor cursor = db.query(TABLE_USER, //Table to query
+        Cursor cursor = db.query(TABLE_PASS, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
                 selectionArgs,              //The values for the WHERE clause
@@ -198,7 +198,7 @@ public class DBconnect extends SQLiteOpenHelper {
           SQL query equivalent to this query function is
           SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
          */
-        Cursor cursor = db.query(TABLE_USER, //Table to query
+        Cursor cursor = db.query(TABLE_PASS, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
                 selectionArgs,              //The values for the WHERE clause
@@ -212,11 +212,11 @@ public class DBconnect extends SQLiteOpenHelper {
         db.close();
         return cursorCount > 0;
     }
-     public boolean checkPrimeUser(String email, String password){
-         ArrayList<User> users = (ArrayList<User>) getAllUser();
-         return email.equals(users.get(0).getEmail().trim()) && password.equals(users.get(0).getPassword().trim());
+    public boolean checkPrimeUser(String email, String password){
+        ArrayList<User> users = (ArrayList<User>) getAllUser();
+        return email.equals(users.get(0).getEmail().trim()) && password.equals(users.get(0).getPassword().trim());
 
-     }
+    }
 
 
 }
